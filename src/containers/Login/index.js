@@ -20,11 +20,24 @@ const generateRandomString = function (length) {
   return text;
 };
 
-async function getToken(code) {
+function getToken(code) {
   const params = new URLSearchParams();
   params.append("code", code);
   params.append("redirect_uri", "http://localhost:3000/login");
   params.append("grant_type", "authorization_code");
+
+  // Promesas
+  // return axios
+  //   .post("https://accounts.spotify.com/api/token", params, {
+  //     headers: {
+  //       Authorization:
+  //         "Basic " +
+  //         new Buffer(
+  //           "2d1e159e45314b108305d32328ae4e4b:799fe8dbd7aa461b92f0933977f55d7b"
+  //         ).toString("base64"),
+  //     },
+  //   })
+  //   .then((res) => res.data);
 
   const res = await axios.post(
     "https://accounts.spotify.com/api/token",
