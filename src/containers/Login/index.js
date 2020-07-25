@@ -20,7 +20,7 @@ const generateRandomString = function (length) {
   return text;
 };
 
-function getToken(code) {
+async function getToken(code) {
   const params = new URLSearchParams();
   params.append("code", code);
   params.append("redirect_uri", "http://localhost:3000/login");
