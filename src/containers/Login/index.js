@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import querystring from "querystring";
 import axios from "axios";
 import { useQuery } from "../../utilities/hooks/use-query";
+import { useHistory } from "react-router-dom";
 import { clientId, clientSecret, redirectUri } from "../../utilities/config";
 import "./styles.css";
 
@@ -57,6 +58,7 @@ async function getToken(code) {
 
 function Login() {
   const query = useQuery();
+  const history = useHistory();
 
   const code = query.get("code");
 
@@ -64,9 +66,11 @@ function Login() {
     const getData = async () => {
       try {
         const data = await getToken(code);
-        console.log(data);
+        localStorage.setItem("sp_token", JSON.stringify(data));
+        history.push("/");
       } catch (error) {
         console.log(error);
+        history.push("/login");
       }
     };
 
