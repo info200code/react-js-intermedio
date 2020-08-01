@@ -1,0 +1,30 @@
+.container {
+  height: 100vh;
+}
+
+.browse-wrapper {
+  height: 90vh;
+  display: flex;
+  border: 1px solid #fff;
+}
+
+.playlist-wrapper {
+  width: 300px;
+  border-right: 1px solid #3e3e3e;
+  overflow: auto;
+}
+
+.body-wrapper {
+  width: 100%;
+  overflow: auto;
+}
+
+.player-wrapper {
+  height: 10vh;
+  border-top: 1px solid #3e3e3e;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: center;
+  background-color: #0e0e0e;
+}
