@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import querystring from "querystring";
 import axios from "axios";
 import { useQuery } from "../../utilities/hooks/use-query";
+import { clientId, clientSecret, redirectUri } from "../../utilities/config";
 import "./styles.css";
 
 /**
@@ -23,7 +24,7 @@ const generateRandomString = function (length) {
 async function getToken(code) {
   const params = new URLSearchParams();
   params.append("code", code);
-  params.append("redirect_uri", "http://localhost:3000/login");
+  params.append("redirect_uri", redirectUri);
   params.append("grant_type", "authorization_code");
 
   // Promesas
@@ -46,9 +47,7 @@ async function getToken(code) {
       headers: {
         Authorization:
           "Basic " +
-          new Buffer(
-            "2d1e159e45314b108305d32328ae4e4b:799fe8dbd7aa461b92f0933977f55d7b"
-          ).toString("base64"),
+          new Buffer(`${clientId}:${clientSecret}`).toString("base64"),
       },
     }
   );
@@ -81,10 +80,10 @@ function Login() {
       "https://accounts.spotify.com/authorize?" +
         querystring.stringify({
           response_type: "code",
-          client_id: "2d1e159e45314b108305d32328ae4e4b",
+          client_id: clientId,
           scope:
             "user-read-private user-read-email user-library-read ugc-image-upload",
-          redirect_uri: "http://localhost:3000/login",
+          redirect_uri: redirectUri,
           state: generateRandomString(16),
         })
     );
