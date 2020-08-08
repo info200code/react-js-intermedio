@@ -1,17 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles.css";
 
 export const MenuItem = ({ children, to }) => {
   return (
-    <li>
-      <a href="/">{children}</a>
+    <li className="menu-item">
+      <Link to={to}>{children}</Link>
     </li>
   );
 };
 
 const Menu = ({ title, children }) => {
   return (
-    <div clasName="menu-container">
+    <div className="menu-container">
       <header className="menu-title">{title}</header>
       <ul>{children}</ul>
     </div>
