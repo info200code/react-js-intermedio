@@ -1,6 +1,7 @@
 import React from "react";
 import { User, SearchField } from "../../components";
 import "./styles.css";
+import { Switch, Route } from "react-router-dom";
 
 const Browse = () => {
   return (
@@ -10,7 +11,13 @@ const Browse = () => {
         <User />
       </header>
       <div className="browse-body">
-        <p style={{ color: "#fff" }}>datos</p>
+        <Switch>
+          <Route path="/users/:user/playlist/:playlistId">
+            <div style={{ color: "#fff" }}>
+              {JSON.stringify({ data: "playlist" })}
+            </div>
+          </Route>
+        </Switch>
       </div>
     </div>
   );
