@@ -3,6 +3,7 @@ import { Menu } from "../../components";
 import PlayList from "../PlayLists";
 import { StoreProvider } from "../../utilities/hooks/use-store";
 import { getToken } from "../../utilities/session";
+import Browse from "../Browse";
 import "./styles.css";
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
             <PlayList />
           </div>
           <div className="body-wrapper">
+            <Browse />
             {/* agregar 2 rutas
             1. /users -> un componente diferente 
             2. /category -> un componente diferente 

@@ -18,6 +18,11 @@ export class Service {
     return axiosInstance;
   }
 
+  async getUser() {
+    const res = await this.axios.get("/me");
+    return res.data;
+  }
+
   async getPlaylists() {
     const res = await this.axios.get("/me/playlists");
     return res.data;

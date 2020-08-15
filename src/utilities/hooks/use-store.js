@@ -17,12 +17,24 @@ export const StoreProvider = ({ children, session }) => {
 
 const useStoreProvider = (token) => {
   const history = useHistory();
+  const [user, setUser] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const errorHandler = () => history.push("/login");
 
   const service = new Service(token);
 
-  return { service };
+  useEffect(() => {
+    const getUserData = async () => {
+      const data = await service.getUser();
+      setUser(data);
+      setLoading(false);
+    };
+
+    getUserData();
+  }, []);
+
+  return { user, loading, service };
 };
 
 export const useStore = () => useContext(StoreContext);
