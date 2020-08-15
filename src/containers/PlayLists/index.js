@@ -14,7 +14,7 @@ const PlayLists = () => {
   useEffect(() => {
     const getPlaylists = async () => {
       const data = await service.getPlaylists();
-      setPlaylists(data);
+      setPlaylists(data.items);
       setLoading(false);
     };
 
@@ -25,10 +25,16 @@ const PlayLists = () => {
     return <p style={{ color: "#fff" }}>loading playlists...</p>;
   }
 
-  console.log(playlists);
   return (
     <Menu title="Playlists">
-      <Menu.Item to="/">Playlist 1</Menu.Item>
+      {playlists.map((playlist) => (
+        <Menu.Item
+          key={playlist.id}
+          to={`/users/${playlist.owner.id}/playlist/${playlist.id}`}
+        >
+          {playlist.name}
+        </Menu.Item>
+      ))}
     </Menu>
   );
 };

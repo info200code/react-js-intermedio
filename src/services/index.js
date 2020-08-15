@@ -11,7 +11,7 @@ export class Service {
     const axiosInstance = axios.create({
       baseURL: "https://api.spotify.com/v1",
       headers: {
-        Authoritation: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
