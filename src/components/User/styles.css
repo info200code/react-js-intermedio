@@ -2,3 +2,9 @@
   color: #fff;
   font-size: 13px;
 }
+
+.skeleton {
+  background-color: gray;
+  height: 15px;
+  width: 60px;
+}

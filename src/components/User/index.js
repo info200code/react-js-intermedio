@@ -3,7 +3,11 @@ import "./styles.css";
 import { useStore } from "../../utilities/hooks/use-store";
 
 export const User = () => {
-  const { user } = useStore();
+  const { user, loading } = useStore();
+
+  if (loading) {
+    return <div className="skeleton"></div>;
+  }
 
   return (
     <p className="user-label">
