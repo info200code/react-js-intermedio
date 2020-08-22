@@ -21,10 +21,6 @@ const Home = () => {
           </div>
           <div className="body-wrapper">
             <Browse />
-            {/* agregar 2 rutas
-            1. /users -> un componente diferente 
-            2. /category -> un componente diferente 
-          */}
           </div>
         </div>
         <div className="player-wrapper"></div>

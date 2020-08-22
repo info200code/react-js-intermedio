@@ -1,0 +1,17 @@
+.playlist-card {
+  display: flex;
+}
+
+.playlist-card-cover {
+  height: 200px;
+  width: 200px;
+  margin-right: 20px;
+}
+
+.playlist-card-info {
+  color: #fff;
+}
+
+.playlist-card-info p {
+  margin: 5px 0;
+}

@@ -1,0 +1,9 @@
+.play-button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  padding: 0;
+  font-size: 25px;
+  cursor: pointer;
+}

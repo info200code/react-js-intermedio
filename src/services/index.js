@@ -27,4 +27,16 @@ export class Service {
     const res = await this.axios.get("/me/playlists");
     return res.data;
   }
+
+  async getPlaylistByUser(user, playlistId) {
+    const res = await this.axios.get(`/users/${user}/playlists/${playlistId}`);
+    return res.data;
+  }
+
+  async getTracksByUser(user, playlistId) {
+    const res = await this.axios.get(
+      `/users/${user}/playlists/${playlistId}/tracks`
+    );
+    return res.data;
+  }
 }
