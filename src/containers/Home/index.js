@@ -5,6 +5,8 @@ import { StoreProvider } from "../../utilities/hooks/use-store";
 import { getToken } from "../../utilities/session";
 import Browse from "../Browse";
 import "./styles.css";
+import TrackTitle from "../../components/TrackTitle";
+import CurrentTrack from "../CurrentTrack";
 
 const Home = () => {
   const session = getToken();
@@ -23,7 +25,10 @@ const Home = () => {
             <Browse />
           </div>
         </div>
-        <div className="player-wrapper"></div>
+        <div className="player-wrapper">
+          <TrackTitle />
+          <CurrentTrack />
+        </div>
       </div>
     </StoreProvider>
   );
