@@ -39,4 +39,11 @@ export class Service {
     );
     return res.data;
   }
+
+  async getCategories() {
+    let url = "/browse/categories";
+
+    const res = await this.axios.get(url);
+    return res.data;
+  }
 }
