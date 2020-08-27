@@ -1,0 +1,19 @@
+.card-item img.card-cover {
+  height: 200px;
+  width: 200px;
+}
+
+.card-item p.card-title a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.card-item p.card-item {
+  margin: 0;
+  margin-top: 10px;
+}
+
+.card-item p.card-title a:hover {
+  text-decoration: underline;
+}
