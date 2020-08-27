@@ -40,10 +40,21 @@ export class Service {
     return res.data;
   }
 
-  async getCategories() {
+  async getCategories(id) {
     let url = "/browse/categories";
 
+    if (id) {
+      url = `${url}/${id}`;
+    }
+
     const res = await this.axios.get(url);
+    return res.data;
+  }
+
+  async getPlaylistByCategory(categoryId) {
+    const res = await this.axios.get(
+      `/browse/categories/${categoryId}/playlists?country=NI`
+    );
     return res.data;
   }
 }
