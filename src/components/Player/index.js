@@ -7,8 +7,17 @@ import "./styles.css";
 import { formatMilliseconds } from "../../utilities/formatMilliseconds";
 import { useTracks } from "../../utilities/hooks/use-track";
 
-const Player = ({ src }) => {
-  const { currentTrack } = useTracks();
+const Player = () => {
+  const {
+    currentTrack,
+    playStatus,
+    isPlaying,
+    togglePlay,
+    handlePrevTrack,
+    handleNexTrack,
+    nextTrack,
+    prevTrack,
+  } = useTracks();
   const [progress, setProgress] = useState({
     position: 0,
   });
@@ -22,24 +31,36 @@ const Player = ({ src }) => {
   };
 
   const onPausePlay = () => {
-    if (!src) return;
+    if (!currentTrack?.preview_url) return;
 
-    // togglePlay()
+    togglePlay();
+  };
+
+  const onPrevTrack = () => {
+    if (prevTrack) {
+      handlePrevTrack();
+    }
+  };
+
+  const onNextTrack = () => {
+    if (nextTrack) {
+      handleNexTrack();
+    }
   };
 
   return (
     <div className="player">
       <div className="player-actions">
-        <button className="player-action">
+        <button onClick={onPrevTrack} className="player-action">
           <MdSkipPrevious />
         </button>
-        <PlayButton onClick={onPausePlay} playing={false} />
-        <button className="player-action">
+        <PlayButton onClick={onPausePlay} playing={isPlaying} />
+        <button onClick={onNextTrack} className="player-action">
           <MdSkipNext />
         </button>
         <Sound
           url={currentTrack?.preview_url}
-          playStatus={Sound.status.STOPPED}
+          playStatus={playStatus}
           onPlaying={handleSongPlaying}
           onFinishedPlaying={() => {}}
         />
