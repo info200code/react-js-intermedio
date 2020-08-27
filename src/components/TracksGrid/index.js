@@ -1,8 +1,9 @@
 import React from "react";
 import PlayButton from "../PlayButton";
 import "./styles.css";
+import { useTracks } from "../../utilities/hooks/use-track";
 
-const Row = ({ track, active }) => {
+const Row = ({ track, active, isPlaying, onClick }) => {
   let classes = "track-row";
   if (active) {
     classes = `${classes} active`;
@@ -11,7 +12,7 @@ const Row = ({ track, active }) => {
   return (
     <tr className={classes}>
       <td>
-        <PlayButton playing={false} onClick={() => alert(track.name)} />
+        <PlayButton playing={active && isPlaying} onClick={onClick} />
       </td>
       <td>{track?.name}</td>
       <td>{track?.artists[0]?.name}</td>
@@ -20,8 +21,29 @@ const Row = ({ track, active }) => {
   );
 };
 
-const TracksGrid = ({ tracks }) => {
-  console.log(tracks);
+const TracksGrid = () => {
+  const {
+    tracks,
+    currentTrack,
+    togglePlay,
+    handleCurrentTrack,
+    isPlaying,
+  } = useTracks();
+  console.log({
+    tracks,
+    currentTrack,
+    togglePlay,
+    handleCurrentTrack,
+    isPlaying,
+  });
+  const onClick = (track) => {
+    if (currentTrack && track.id === currentTrack?.id) {
+      togglePlay();
+    } else {
+      handleCurrentTrack(track);
+    }
+  };
+
   return (
     <table className="tracks-grid">
       <thead>
@@ -33,8 +55,14 @@ const TracksGrid = ({ tracks }) => {
         </tr>
       </thead>
       <tbody>
-        {tracks.map(({ track }) => (
-          <Row key={track.id} track={track} />
+        {tracks.map((track) => (
+          <Row
+            key={track.id}
+            track={track}
+            onClick={onClick}
+            active={currentTrack?.id === track.id}
+            isPlaying={isPlaying}
+          />
         ))}
       </tbody>
     </table>

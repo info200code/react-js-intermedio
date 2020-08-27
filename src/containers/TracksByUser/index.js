@@ -3,13 +3,14 @@ import PlaylistCard from "../../components/PlaylistCard";
 import { useStore } from "../../utilities/hooks/use-store";
 import { useParams } from "react-router-dom";
 import TracksGrid from "../../components/TracksGrid";
+import { useTracks } from "../../utilities/hooks/use-track";
 
 const TracksByUser = () => {
   const { playlistId, user } = useParams();
   const { service } = useStore();
   const [loading, setLoading] = useState(true);
   const [playlist, setPlaylist] = useState({});
-  const [tracks, setTracks] = useState([]);
+  const { setTracks } = useTracks();
 
   useEffect(() => {
     const getData = async () => {
@@ -17,7 +18,7 @@ const TracksByUser = () => {
       const tracksData = await service.getTracksByUser(user, playlistId);
 
       setPlaylist(playlistData);
-      setTracks(tracksData.items);
+      setTracks(tracksData.items?.map(({ track }) => track));
       setLoading(false);
     };
 
@@ -31,7 +32,7 @@ const TracksByUser = () => {
   return (
     <div>
       <PlaylistCard playtlist={playlist} />
-      <TracksGrid tracks={tracks} />
+      <TracksGrid />
     </div>
   );
 };
