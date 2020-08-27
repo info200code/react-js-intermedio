@@ -1,0 +1,10 @@
+.search-results-title {
+  color: #808080;
+  border-bottom: 1px solid gray;
+  padding-bottom: 20px;
+  font-size: 40px;
+}
+
+.search-results .card-list {
+  border-bottom: 1px solid gray;
+}

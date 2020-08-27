@@ -69,4 +69,15 @@ export class Service {
     );
     return res.data;
   }
+
+  async search(value) {
+    const query = querystring.stringify({
+      type: "track,playlist",
+      q: value,
+      market: "from_token",
+    });
+
+    const res = await this.axios.get(`search?${query}`);
+    return res.data;
+  }
 }
