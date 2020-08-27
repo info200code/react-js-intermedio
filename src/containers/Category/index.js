@@ -29,7 +29,7 @@ const Category = () => {
 
   return (
     <div>
-      <h2 className="category-title">{}</h2>
+      <h2 className="category-title">{category.name}</h2>
       <CardList>
         {playlists.map((playlist) => (
           <CardList.Card

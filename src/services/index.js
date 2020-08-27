@@ -57,4 +57,16 @@ export class Service {
     );
     return res.data;
   }
+
+  async getSinglePlaylist(id) {
+    const res = await this.axios.get(`/users/spotifycharts/playlists/${id}`);
+    return res.data;
+  }
+
+  async getTracks(id) {
+    const res = await this.axios.get(
+      `/users/spotifycharts/playlists/${id}/tracks`
+    );
+    return res.data;
+  }
 }

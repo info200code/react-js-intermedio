@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import TracksByUser from "../TracksByUser";
 import GenericResults from "../GenericResults";
 import Category from "../Category";
+import Tracks from "../Tracks";
 
 const Browse = () => {
   return (
@@ -19,6 +20,7 @@ const Browse = () => {
             <TracksByUser />
           </Route>
           <Route path="/category/:id" component={Category} />
+          <Route path="/tracks/:id" component={Tracks} />
           <Route path="/" exact component={GenericResults} />
         </Switch>
       </div>
