@@ -29,13 +29,7 @@ const TracksGrid = () => {
     handleCurrentTrack,
     isPlaying,
   } = useTracks();
-  console.log({
-    tracks,
-    currentTrack,
-    togglePlay,
-    handleCurrentTrack,
-    isPlaying,
-  });
+
   const onClick = (track) => {
     if (currentTrack && track.id === currentTrack?.id) {
       togglePlay();
@@ -59,7 +53,7 @@ const TracksGrid = () => {
           <Row
             key={track.id}
             track={track}
-            onClick={onClick}
+            onClick={() => onClick(track)}
             active={currentTrack?.id === track.id}
             isPlaying={isPlaying}
           />

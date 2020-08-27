@@ -5,8 +5,10 @@ import Progress from "../ProgressBar";
 import { MdSkipPrevious, MdSkipNext } from "react-icons/md";
 import "./styles.css";
 import { formatMilliseconds } from "../../utilities/formatMilliseconds";
+import { useTracks } from "../../utilities/hooks/use-track";
 
 const Player = ({ src }) => {
+  const { currentTrack } = useTracks();
   const [progress, setProgress] = useState({
     position: 0,
   });
@@ -36,7 +38,7 @@ const Player = ({ src }) => {
           <MdSkipNext />
         </button>
         <Sound
-          url={""}
+          url={currentTrack?.preview_url}
           playStatus={Sound.status.STOPPED}
           onPlaying={handleSongPlaying}
           onFinishedPlaying={() => {}}

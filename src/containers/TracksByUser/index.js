@@ -23,7 +23,7 @@ const TracksByUser = () => {
     };
 
     getData();
-  }, []);
+  }, [playlistId, user]);
 
   if (loading) {
     return <p>Loading...</p>;

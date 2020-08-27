@@ -26,6 +26,7 @@ const useTrackProvider = () => {
   };
 
   const handleCurrentTrack = (track) => {
+    setPlayStatus(Sound.status.PLAYING);
     setCurrentTrack(track);
   };
 
@@ -35,7 +36,7 @@ const useTrackProvider = () => {
     currentTrack,
     handleCurrentTrack,
     togglePlay,
-    isPlaying: playStatus === Sound.status.PAYING,
+    isPlaying: playStatus === Sound.status.PLAYING,
   };
 };
 
