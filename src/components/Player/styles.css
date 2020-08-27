@@ -1,0 +1,30 @@
+.player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player .player-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-progress {
+  margin: 0 20px;
+  width: 100%;
+}
+
+.player .player-actions .play-button {
+  font-size: 50px;
+}
+
+.player-action {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  padding: 0;
+  font-size: 25px;
+  cursor: pointer;
+}
